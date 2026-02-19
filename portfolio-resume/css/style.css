@@ -1,0 +1,180 @@
+/* 부드러운 스크롤 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 기본 폰트 */
+body {
+  font-family: 'Inter', 'Pretendard', system-ui, -apple-system, sans-serif;
+}
+
+/* 스크롤 애니메이션 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 네비게이션 스크롤 배경 */
+#navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dark #navbar.scrolled {
+  background-color: rgba(11, 17, 32, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* 햄버거 메뉴 애니메이션 */
+#hamburgerBtn.active .hamburger-icon span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+#hamburgerBtn.active .hamburger-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+#hamburgerBtn.active .hamburger-icon span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* 타임라인 */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #FF6B5B, #FF8A7A);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -1.75rem;
+  top: 1.5rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #FF6B5B;
+  border: 2px solid white;
+  box-shadow: 0 0 0 3px #FF6B5B;
+}
+
+.dark .timeline-dot {
+  border-color: #0B1120;
+}
+
+/* 테크 티커 마퀴 애니메이션 */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.ticker-container {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* Hero 글로우 효과 */
+.glow-ring {
+  box-shadow: 0 0 60px 20px rgba(255, 107, 91, 0.15),
+              0 0 120px 40px rgba(255, 107, 91, 0.05);
+}
+
+/* SNS 카드 호버 효과 */
+.sns-card {
+  transform: translateY(0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sns-card:hover {
+  transform: translateY(-4px);
+}
+
+/* 문의 폼 제출 성공 메시지 */
+.form-success {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 커스텀 스크롤바 (다크 테마) */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0B1120;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #1A2332;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #FF6B5B;
+}
+
+/* 포커스 링 */
+.dark *:focus-visible {
+  outline: 2px solid #FF6B5B;
+  outline-offset: 2px;
+}
+
+/* 네비 링크 호버 언더라인 */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #FF6B5B;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
